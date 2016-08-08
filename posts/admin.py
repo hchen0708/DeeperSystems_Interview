@@ -6,7 +6,6 @@ from django.utils.text import slugify
 class PostAdmin(admin.ModelAdmin):
 	list_display = ['__unicode__', 'timestamp']
 	prepopulated_fields = {'slug': ["title"]}
-	# slugified_string = slugify(title)
 
 	class Meta:
 		model = Post

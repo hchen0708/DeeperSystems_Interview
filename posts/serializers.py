@@ -20,6 +20,5 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 class PostViewSet(viewsets.ModelViewSet):
 	authentication_classes = [SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication]
-	# permission_classes = [permissions.IsAuthentica]
 	queryset = Post.objects.all()
 	serializer_class = PostSerializer

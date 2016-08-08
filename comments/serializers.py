@@ -4,13 +4,6 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from .models import Comment
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-	# post = PostSerializer()
-	# parent = serializers.SerializerMethodField(read_only=True)
-
-	# def get_parent(self, instance):
-	# 	queryset = instance.get_parent()
-	# 	serializer = PostSerializer(queryset, context={"request": instance}, many=True)
-	# 	return serializer.data
 
 	class Meta:
 		model = Comment
