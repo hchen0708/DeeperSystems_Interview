@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+
+{% block head_title %}Create Post{% endblock head_title%}
+
+{% block content %}
+<h3>Post Create Form</h3>
+
+<form method="POST" action=''>{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="Create Post">
+
+</form>
+
+{% endblock content %}

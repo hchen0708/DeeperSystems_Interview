@@ -1,0 +1,8 @@
+Django==1.10
+django-crispy-forms==1.6.0
+django-filter==0.13.0
+djangorestframework==3.4.3
+djangorestframework-jwt==1.8.0
+inflection==0.3.1
+Markdown==2.6.6
+PyJWT==1.4.1

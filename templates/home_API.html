@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.js"></script>
+  
+
+<!-- <style type="text/css">
+body {
+    font-size: 75%;
+    font-family:"Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+#body {
+    clear: both;
+    margin: 0 auto;
+    max-width: 534px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 0.75em;
+    border: 0 none;
+    margin-top:35px;
+}
+#body td {
+    padding:15px 30px 15px 10px;
+}
+#body tr td:nth-child(1) {
+    font-weight:bold;
+}
+
+  </style> -->
+
+  <title>{{ title }}</title>
+
+  
+    
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+// The Google Geocoding API url used to get the JSON data
+var JSONAPI = "http://127.0.0.1:8000/api/posts/?format=json";
+
+$.getJSON(JSONAPI, function (json) {
+
+    // Set the variables from the results array
+    var n_obj = json.length
+    var authorary = []
+    for (ii=0; ii < n_obj; ii++){
+    var author = json[ii].author;
+
+
+    console.log('Author : ', author);
+    var title = json[ii].title;
+    console.log('Title: ', title);	
+    
+    authorary.push(author);
+    console.log('Authorary', authorary);
+
+
+}
+	
+	$('#author').text(author);
+	$('#authorary').text(authorary);
+    $('#title').text(title);
+
+    // Set the table td text
+    loopingThrough(authorary);
+
+    
+});
+
+// Caching the link jquery object
+
+
+});
+
+
+
+</script>
+<script>
+    function loopingThrough(aaa){
+	var x = "", i;
+	var a = aaa;
+	console.log(a)
+	for (i=0; i<3; i++){
+		console.log(a[i])
+		x = x + '<td id="' + a[i] +'"></td>';
+		// <tr><td id="title"></td><td id="author"></td></tr>
+		document.getElementById("loopingHere").innerHTML = x;
+		}
+}
+
+</script>
+  
+</head>
+
+<body>
+  <div>
+    
+<h1>Blog Posts</h1>
+	{% for obj in object_list %}
+
+
+	{{obj.author}}<br/>
+	{% endfor %}
+    <hr/>
+	
+    <table border="2">
+        <tr>
+            <td>Title:</td>
+            <td>Author:</td>
+        </tr>
+        <button onclick="loopingThrough()">Try it</button>
+        <div id="loopingHere"></div>
+
+
+    </table>
+    
+    <hr/>
+    
+</div>
+  
+</body>
+
+</html>
+

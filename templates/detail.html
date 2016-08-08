@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+
+{% block head_title %}Post Detail{% endblock head_title%}
+
+{% block content %}
+
+<h3>Post detail - {{ title }}</h3>
+
+title: {{instance.title}}<br/>
+author: {{instance.author}}<br/>
+content: {{instance.post_content}}<br/>
+timestamp: {{instance.timestamp}}<br/>
+id: {{instance.id}}<br/>
+
+<p class="lead">{{ comments.count }}  Comments</p>
+{% if not comments.count == 0 %}
+{% for comment in comments %}
+
+{{ comment.comment_content }}<br/> {{ comment.author }} -- {{ comment.timestamp|timesince }} <br/><br/>
+{% endfor %}
+{% endif %}
+
+<p> Add Comment</p>
+<form method="POST" action='.'>{% csrf_token %}
+
+{{ form.as_p }}
+<input type="submit"  value="Add Comment">
+</form>
+
+
+{% endblock content %}
